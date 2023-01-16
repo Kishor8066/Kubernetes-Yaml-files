@@ -1,5 +1,3 @@
-#kubectl run nginx --image nginx
-
 apiVersion: v1
 kind: Pod
 metadata:
@@ -12,5 +10,10 @@ spec:
   - name: nginx
     image: nginx
     
- # kubectl apply -f pod.yaml
- # kubectl get pods
+
+
+#kubectl run nginx --image nginx
+# kubectl apply -f pod.yaml
+# kubectl get pods
+#kubectl describe pod podname
+#kubectl delete pod podname
