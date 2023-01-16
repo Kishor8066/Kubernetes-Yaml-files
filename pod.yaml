@@ -12,4 +12,5 @@ spec:
   - name: nginx
     image: nginx
     
-   # kubectl apply -f pod.yaml
+ # kubectl apply -f pod.yaml
+ # kubectl get pods
