@@ -17,3 +17,5 @@ spec:
 #kubectl get pods
 #kubectl describe pod podname
 #kubectl delete pod podname
+
+#kubectl run nginx --image=nginx:latest --dry-run=client -o yaml > pod.yaml
