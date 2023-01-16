@@ -13,7 +13,7 @@ spec:
 
 
 #kubectl run nginx --image nginx
-# kubectl apply -f pod.yaml
-# kubectl get pods
+#kubectl apply -f pod.yaml
+#kubectl get pods
 #kubectl describe pod podname
 #kubectl delete pod podname
