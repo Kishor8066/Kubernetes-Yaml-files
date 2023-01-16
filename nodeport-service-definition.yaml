@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: myapp-service
+
+spec:
+    type: Nodeport
+    ports:
+      - targetport: 80
+        port: 80
+        nodeport: 30008
+    selector:
+             app: myapp
+             type: front-end
+             
+# If you don't provide an nodeport, it will auto assign a port in the range from 30000 to 32767
+# We will use label and selector to link pod with this service.
+#kubectl create -f nodeport-service-definition.yaml
+#kubectl get svc
+#curl http://192.168.1.2:30008
