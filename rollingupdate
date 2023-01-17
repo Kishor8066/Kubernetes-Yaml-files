@@ -1,0 +1,19 @@
+- There are 2 types of deployment strategies
+	1. Recreate: For example, you have 5 replicas of your web application instance deployed. One way to upgrade these to a newer version is to destroy all of these and then create newer versions of application instances. Meaning first, destroy the five running instances, and then deploy five new instances of the new application version. The problem with this, the period in which the older version is down and newer version is up..in that gap the application is down and inaccessible to users. This strategy is known as the recreate strategy, and this is not the default deployment strategy.
+	2. RollingUpdate (Default Strategy) : In this we will not destroy all of them at once. Instead, we take down the older version and bring up a newer version one by one. This way, the application never goes down and the upgrade is seamless.  Remember, if you do not specify a strategy while deplyment, it will assume it to be rolling update. Rolling update is the default deployment strategy.
+
+You can see the status of the rollout by the below command
+$ kubectl rollout status deployment/myapp-deployment
+
+To see the history and revisions
+ kubectl rollout history deployment/myapp-deployment
+ 
+ 
+ 
+$ kubectl create -f deployment-definition.yaml
+$ kubectl get deployments
+$ kubectl apply -f deployment-definition.yaml
+$ kubectl set image deployment/myapp-deployment nginx=nginx:1.9.1
+$ kubectl rollout status deployment/myapp-deployment
+$ kubectl rollout history deployment/myapp-deployment
+$ kubectl rollout undo deployment/myapp-deployment
