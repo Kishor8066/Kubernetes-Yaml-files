@@ -1,0 +1,13 @@
+- You can purposefully drain the node of all the workloads so that the workloads are moved to other nodes.
+- The node is also cordoned or marked as unschedulable.
+- When the node is back online after a maintenance, it is still unschedulable. You then need to uncordon it.
+- There is also another command called cordon. Cordon simply marks a node unschedulable. Unlike drain it does not terminate or move the pods on an existing node.
+- If any node has a pod, which is not part of any replicaset, then you cannot drain the node, due to that pod. 
+
+
+kubectl drain node1
+kubectl cordon node1
+kubectl uncordon node1
+If the node was down for more than 5 minutes, then the pods are terminated from that node
+
+kube-controller-manager --pod-eviction-timeout=5m0s
