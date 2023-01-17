@@ -1,0 +1,49 @@
+$ ip link
+$ ip addr
+$ route
+$ ip route show
+or
+$ ip route list
+$ ip route add 192.168.1.0/24 via 192.168.2.1
+$ ip route add default via 192.168.2.1
+
+To check if the ip forwarding is enabled on the host.
+$ cat /proc/sys/net/ipv4/ip_forward
+0
+$ echo 1 > /proc/sys/net/ipv4/ip_forward
+
+Enable packet forwarding for ipv4
+$ cat /etc/sysctl.conf
+# Uncomment the line
+net.ipv4.ip_forward=1
+
+To view the sysctl variables.
+$ sysctl -a 
+
+To reload the sysctl configuration.
+sysctl --system
+
+
+Adding entry in the /etc/hostsfile to resolve by their hostname.
+$ cat >> /etc/hosts
+172.17.0.64  web
+
+
+Every host has a DNS resolution configuration file at /etc/resolv.conf.
+
+$ cat /etc/resolv.conf
+nameserver 127.0.0.53
+options edns0
+
+- Adding well known public nameserver in the /etc/resolv.conffile.
+```
+$ cat /etc/resolv.conf
+nameserver   127.0.0.53
+nameserver   8.8.8.8
+options edns0
+```
+
+
+$ dig www.google.com
+
+
