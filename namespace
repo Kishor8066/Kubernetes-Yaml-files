@@ -1,0 +1,35 @@
+kubectl get pods --namespace=kube-system
+kubectl create -f pod-defination.yaml --namespace=dev
+
+Get pod details for dev namespace
+kubectl get pods --namespace=dev
+
+Get pod details of default namespace
+kubectl get pods --namespace=default
+
+How to set a namespace as a default namespace.
+kubectl config set-context $(kubectl config current-context) --namespace=dev
+
+Get pod details for all namespace
+kubectl get pods --all-namespaces
+
+
+
+Resource Quota
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: dev
+
+spec:
+  hard:
+    pods: "10"
+    request.cpu: "4"
+    request.memory: 5Gi
+    limits.cpu: "10"
+    limits.memory: 10Gi
+
+
+kubectl create -f compute-quota.yaml
