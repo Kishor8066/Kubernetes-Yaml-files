@@ -1,0 +1,34 @@
+Taints
+
+- The taint effect defines what would happen to the pods if they do not tolerate the taint.
+- There are 3 taint effects
+	- NoSchedule
+	- PreferNoSchedule
+	- NoExecute
+
+- Use kubectl taint nodes command to taint a node.
+
+kubectl taint nodes <node-name> key=value:taint-effect
+kubectl taint nodes node1 app=blue:NoSchedule
+
+
+Toleration - PODs
+*****************
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+
+  toleration:
+  - key:"app"
+    operator: "Equal"
+    value:"blue"
+    effect:"NoSchedule"
+
+
+
+To check the taint, run "kubectl describe node node01"
