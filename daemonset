@@ -1,0 +1,36 @@
+DaemonSets are like replicasets, as it helps in to deploy multiple instances of pod. But it runs one copy of your pod on each node in your cluster.
+
+DaemonSets - UseCases
+
+If you want to deploy monitoring agent and log collector in each of your nodes in the cluster, so you can monitor your cluster better. A DaemonSet is perfect for that, as it can deploy your monitoring agent in the form of a pod in all the nodes in your cluster. 
+
+
+DaemonSet has similar configuration like Replica-set
+```
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: monitoring-daemon
+  labels:
+    app: nginx
+spec:
+  selector:
+    matchLabels:
+      app: monitoring-agent
+  template:
+    metadata:
+     labels:
+       app: monitoring-agent
+    spec:
+      containers:
+      - name: monitoring-agent
+        image: monitoring-agent
+```
+
+
+$ kubectl create -f daemon-set-definition.yaml
+
+$ kubectl get daemonsets
+
+$ kubectl describe daemonsets monitoring-daemon
+
