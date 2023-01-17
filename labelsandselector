@@ -1,0 +1,46 @@
+ apiVersion: v1
+ kind: Pod
+ metadata:
+  name: simple-webapp
+  labels:
+    app: App1
+    function: Front-end
+ spec:
+  containers:
+  - name: simple-webapp
+    image: simple-webapp
+    ports:
+    - containerPort: 8080
+
+
+Filter the pods based on labels
+$ kubectl get pods --selector app=App1
+
+
+
+
+ReplicaSet with labels
+**********************
+
+ apiVersion: apps/v1
+ kind: ReplicaSet
+ metadata:
+   name: simple-webapp
+   labels:
+     app: App1
+     function: Front-end
+ spec:
+  replicas: 3
+  selector:
+    matchLabels:
+     app: App1
+ template:
+   metadata:
+     labels:
+       app: App1
+       function: Front-end
+   spec:
+     containers:
+     - name: simple-webapp
+       image: simple-webapp  
+
